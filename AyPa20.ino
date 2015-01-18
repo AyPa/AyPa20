@@ -940,6 +940,388 @@ void TwiLight(void)
       ); 
 }
 
+long sum=0;
+
+void NoLight(void) __attribute__((noinline)); 
+void NoLight(void)
+{
+  
+  
+//  Call-used registers (r18-r27, r30-r31):
+//May be allocated by gcc for local data. You may use them freely in assembler subroutines.
+//Call-saved registers (r2-r17, r28-r29):  
+//    for (word e=1;e<65535;e++) {
+  //  for (byte e=0;e<255;e++) {
+
+    __asm__ __volatile__(
+    
+    "push r28\n\t"
+    "push r29\n\t"
+    "push r16\n\t"
+    "push r17\n\t"
+ 
+    "ldi r18,0b00000001\n\t"  // маски для портов B и C 012345
+    "ldi r19,0b00000010\n\t"
+    "ldi r20,0b00000100\n\t"
+    "ldi r21,0b00001000\n\t"
+    "ldi r22,0b00010000\n\t"
+    "ldi r23,0b00100000\n\t"
+ 
+//"cli\n\t" // с включенными прерываниями мерцает почем зря. 
+
+//    "lds r31,counter\n\t"
+  //  "andi r31,1\n\t"
+    "lds r31,Fan\n\t" // лапка 0 управляет вентилятором.
+
+
+    "ldi r24,0b00000100\n\t"  // маски для порта D 234567 (чтобы вентилятор пробрасывать) 
+    "ldi r25,0b00001000\n\t"
+    "ldi r26,0b00010000\n\t"
+    "ldi r27,0b00100000\n\t"
+    "ldi r28,0b01000000\n\t"
+    "ldi r29,0b10000000\n\t"
+
+    "or r24,r31\n\t"
+    "or r25,r31\n\t"
+    "or r26,r31\n\t"
+    "or r27,r31\n\t"
+    "or r28,r31\n\t"
+    "or r29,r31\n\t"
+  
+  "ldi r17,11\n\t" // 60 sec
+     
+"888:\n\t"
+    
+    "ldi r30,0\n\t" 
+    "mov r1,r30\n\t" // r1=0
+    "ldi r16,253\n\t" 
+//    "ldi r30,15\n\t"
+    "ldi r30,248\n\t"
+    //60000
+    //60160 60161
+//60378
+  
+"555:\n\t"// 712360 times per minute
+/*
+"push r24\n\t"
+"push r25\n\t"
+"push r26\n\t"
+"push r27\n\t"
+
+"lds r24,sum\n\t"
+"lds r25,sum+1\n\t"
+"lds r26,sum+2\n\t"
+"lds r27,sum+3\n\t"
+
+"adiw r24,1\n\t"
+"adc r26,r1\n\t"
+"adc r27,r1\n\t"
+
+"sts sum,r24\n\t"
+"sts sum+1,r25\n\t"
+"sts sum+2,r26\n\t"
+"sts sum+3,r27\n\t"
+
+"pop r27\n\t"
+"pop r26\n\t"
+"pop r25\n\t"
+"pop r24\n\t"*/
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+// 2
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+// 3
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+
+// 4
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+//5
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+// 6
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+// 7
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+// 8
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+"nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t""nop\n\t"
+
+
+//64
+
+// 16x3x7=336ops
+// 1344ops
+
+"dec r30\n\t" //+1
+"breq 111f\n\t"//1 (not taken)
+"rjmp 555b\n\t"//2
+"111:\n\t" // 340ops per inner round 1348(64)
+
+"dec r16\n\t"
+"breq 222f\n\t"
+"rjmp 555b\n\t"
+"222:\n\t"
+
+"dec r17\n\t"
+"breq 333f\n\t"
+"rjmp 888b\n\t"
+"333:\n\t"
+
+//"sei\n\t"
+
+"pop r17\n\t"
+"pop r16\n\t"
+"pop r29\n\t"
+"pop r28\n\t"
+
+      ); 
+}
+
 uint8_t count2s=0;
 uint16_t tz,tw;
 long LastDark;
@@ -953,124 +1335,16 @@ for(counter=0;counter<60;counter++){ LightAA(); }
 } // полная яркость
 */
 
-void WaitM20(void) __attribute__((noinline)); 
-void WaitM20(void)
-{
-    __asm__ __volatile__(    
-    "ldi r21,38\n\t" //75000ms
-"11111:\n\t"
-    "ldi r20,245\n\t"     
-"22222:\n\t"    
-    "ldi r19,125\n\t" 
-    "ldi r18,192\n\t"     
-"33333:\n\t"
-
-"dec r18\n\t"   // 1
-"breq 111f\n\t" // 1
-"rjmp 33333b\n\t" // 2  255x4+4=1024 clock
-"111:\n\t"
-
-"dec r19\n\t"
-"breq 222f\n\t"
-"rjmp 33333b\n\t"
-"222:\n\t"
-   
-"dec r20\n\t"
-"breq 333f\n\t"
-"rjmp 22222b\n\t"
-"333:\n\t"
-
-"dec r21\n\t"
-"breq 444f\n\t"
-"rjmp 11111b\n\t"
-"444:\n\t"
-);
-}
 void Wait2S20(void) __attribute__((noinline)); 
 void Wait2S20(void)
 {
     __asm__ __volatile__(    
-    "ldi r21,39\n\t" //2500ms
+    "ldi r21,39\n\t" //2500ms 2516.3
 "11111:\n\t"
     "ldi r20,8\n\t"     
 "22222:\n\t"    
     "ldi r19,125\n\t" 
-    "ldi r18,29\n\t"     
-"33333:\n\t"
-
-"dec r18\n\t"   // 1
-"breq 111f\n\t" // 1
-"rjmp 33333b\n\t" // 2  255x4+4=1024 clock
-"111:\n\t"
-
-"dec r19\n\t"
-"breq 222f\n\t"
-"rjmp 33333b\n\t"
-"222:\n\t"
-   
-"dec r20\n\t"
-"breq 333f\n\t"
-"rjmp 22222b\n\t"
-"333:\n\t"
-
-"dec r21\n\t"
-"breq 444f\n\t"
-"rjmp 11111b\n\t"
-"444:\n\t"
-);
-}
-
-void WaitM16(void) __attribute__((noinline)); 
-void WaitM16(void)
-{
-    __asm__ __volatile__(    
-//    "ldi r21,150\n\t" //300039ms
-//60376 без прерываний 1.00627
-//1.003611111 60594
-    "ldi r21,30\n\t" //60000ms-9:56
-"11111:\n\t"
-    "ldi r20,242\n\t"     
-"22222:\n\t"    
-    "ldi r19,130\n\t" 
-//    "ldi r18,251\n\t"     //60000 9:56
-//    "ldi r18,252\n\t"     
-//    "ldi r18,254\n\t"     //19:53
-//    "ldi r18,200\n\t"     
-    "ldi r18,63\n\t"     
-"33333:\n\t"
-
-"dec r18\n\t"   // 1
-"breq 111f\n\t" // 1
-"rjmp 33333b\n\t" // 2  255x4+4=1024 clock
-"111:\n\t"
-
-"dec r19\n\t"
-"breq 222f\n\t"
-"rjmp 33333b\n\t"
-"222:\n\t"
-   
-"dec r20\n\t"
-"breq 333f\n\t"
-"rjmp 22222b\n\t"
-"333:\n\t"
-
-"dec r21\n\t"
-"breq 444f\n\t"
-"rjmp 11111b\n\t"
-"444:\n\t"
-);
-}
-
-void WaitM24(void) __attribute__((noinline)); 
-void WaitM24(void)
-{
-    __asm__ __volatile__(    
-    "ldi r21,45\n\t" //90000ms
-"11111:\n\t"
-    "ldi r20,242\n\t"     
-"22222:\n\t"    
-    "ldi r19,128\n\t" 
-    "ldi r18,251\n\t"     
+    "ldi r18,238\n\t"     
 "33333:\n\t"
 
 "dec r18\n\t"   // 1
@@ -1126,12 +1400,13 @@ void Wait2S24(void)
 void Wait2S16(void) __attribute__((noinline)); 
 void Wait2S16(void)
 {
-    __asm__ __volatile__(    //1999ms need 2011.5 2018.7
+    __asm__ __volatile__(    //1999ms need 2011.5 2018.7 2013.1
 "11111:\n\t"
     "ldi r20,242\n\t"     
 "22222:\n\t"    
-    "ldi r19,130\n\t"      
-    "ldi r18,50\n\t"     //2011: [177..193]
+    "ldi r19,129\n\t"      
+//    "ldi r18,50\n\t"     //2011: [177..193]
+    "ldi r18,211\n\t"     //2011: [177..193]
 "33333:\n\t"
 
 "dec r18\n\t"   // 1
@@ -1155,6 +1430,7 @@ void Wait2S16(void)
 
 void loop() {
 
+    __asm__ __volatile__("cli\n\t");
     __asm__ __volatile__("Start:\n\t");
 //    __asm__ __volatile__("wdr\n\t");//  wdt_reset();
    
@@ -1163,55 +1439,99 @@ void loop() {
 /*
 long t1=timer0_millis;
 //Wait2S16();
-//Wait2S20();
+Wait2S20();
 //Wait2S24();
 //WaitM16();
 //WaitM20();
 //WaitM24();
 //DayLight();
-TwiLight(); // 60473?
+//TwiLight();
+//NoLight();
 t1=timer0_millis-t1;
 
 Serial.begin(9600);
 Serial.println(">>>");
 //Serial.println(timer0_millis,DEC);
 Serial.println(t1,DEC);
-delay(1000);*/
+//Serial.println(sum,DEC);
+delay(1000);
+*/
 
-    __asm__ __volatile__("cli\n\t");
+
+
+//PORTD=0x0;
+//Wait2S16();Wait2S16();
+//PORTD=0xff;
+//for(counter=0;counter<30;counter++){ Wait2S16(); } //1m
 
 /*
 PORTD=0x0;
 Wait2S16();Wait2S16();
 PORTD=0xff;
-for(counter=0;counter<20;counter++){ WaitM16(); } 
+for(byte r=0;r<30;r++)
+for(counter=0;counter<30;counter++){ Wait2S16(); } //30m
+*/
+/*
 PORTD=0x0;
+Wait2S16();Wait2S16();
 Wait2S16();Wait2S16();
 PORTD=0xff;
-for(counter=0;counter<10;counter++){ WaitM16(); } 
+for(byte r=0;r<60;r++)
+for(counter=0;counter<30;counter++){ Wait2S16(); } //60m
 PORTD=0x0;
 Wait2S16();Wait2S16();
+Wait2S16();Wait2S16();
+
+PORTD=0x0;
+Wait2S20();Wait2S20();
 PORTD=0xff;
-for(counter=0;counter<10;counter++){ WaitM16(); } 
+for(byte r=0;r<60;r++)
+for(counter=0;counter<30;counter++){ Wait2S20(); } //75m
 PORTD=0x0;
-Wait2S16();Wait2S16();
+Wait2S20();Wait2S20();
 */
 
+/*
+Wait2S16();Wait2S16();
+PORTD=0xff;
+for(counter=0;counter<10;counter++){ WaitM16(); } 
+PORTD=0x0;
+Wait2S16();Wait2S16();
+PORTD=0xff;
+for(counter=0;counter<10;counter++){ WaitM16(); } 
+PORTD=0x0;
+Wait2S16();Wait2S16();
 
+*/
+/*
 // 16mhz
 // вентиляторы включаются каждую нечетную минуту днем.
     for(byte r=0;r<4;r++){for(counter=0;counter<60;counter++){ Fan=(counter&1); DayLight(); Fan=0;} Wait2S16();} // 4h  1800-2200
-    for(counter=0;counter<60;counter++){ TwiLight();} // evening 1h                2200-2300
+    for(counter=0;counter<30;counter++){ TwiLight();} // evening 0h:30m                2200-2230
     
-    for(byte r=0;r<5;r++){for(counter=0;counter<60;counter++){ WaitM16(); } } // 5h  2300-0400
-    for(counter=0;counter<59;counter++){ WaitM16(); } // 59m 0400-0459
+    for(byte r=0;r<5;r++){for(counter=0;counter<60;counter++){ NoLight(); } } // 5h  2230-0330
+    for(counter=0;counter<59;counter++){ NoLight(); } // 59m 0330-0429
 
     for(byte r=0;r<14;r++){ Wait2S16();  } // выравнивающий довесок
     
-    for(counter=0;counter<60;counter++){ TwiLight();} // morning 1h                0500-0600
+    for(counter=0;counter<90;counter++){ TwiLight();} // morning 1h:30m                0500-0600
     for(byte r=0;r<12;r++){for(counter=0;counter<60;counter++){ Fan=(counter&1); DayLight(); Fan=0; } Wait2S16();} //12h 0600-1800
-
+*/
 // 20mhz
+// вентиляторы включаются каждую нечетную минуту днем.
+    for(byte r=0;r<4;r++){for(counter=0;counter<75;counter++){ Fan=(counter&1); DayLight(); Fan=0;} Wait2S20();} // 4h  1800-2200
+    for(counter=0;counter<75;counter++){ TwiLight();} // evening 1h                2200-2230
+    
+    for(byte r=0;r<5;r++){for(counter=0;counter<75;counter++){ NoLight(); } } // 5h  2230-0330
+
+    for(counter=0;counter<74;counter++){ NoLight(); } // 59 2/10 m  59m12s 0330-0429
+    for(byte r=0;r<8;r++){ Wait2S20();  } // выравнивающий довесок
+    
+    for(counter=0;counter<75;counter++){ TwiLight();} // morning 1h                0500-0600
+    for(byte r=0;r<12;r++){for(counter=0;counter<75;counter++){ Fan=(counter&1); DayLight(); Fan=0; } Wait2S20();} //12h 0600-1800
+
+
+
   /*  for(byte r=0;r<4;r++){for(counter=0;counter<75;counter++){ LightAA(); }  delay(5000);} // 4h  1800-2200
     for(counter=0;counter<75;counter++){ TwiLight();} delay(5000); // evening 1h                2200-2300
     for(byte r=0;r<6;r++){for(counter=0;counter<75;counter++){ WaitM20(); }  delay(5000);} // 6h  2300-0500
