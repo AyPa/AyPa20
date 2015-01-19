@@ -1001,7 +1001,7 @@ void NoLight(void)
     //60160 60161
 //60378
   
-"555:\n\t"// 712360 times per minute
+"555:\n\t"// 712360*64/60*5/4 949813 times per second
 /*
 "push r24\n\t"
 "push r25\n\t"
