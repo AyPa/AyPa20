@@ -1525,8 +1525,8 @@ Wait2S16();Wait2S16();
     for(byte r=0;r<5;r++){for(counter=0;counter<75;counter++){ NoLight(); } } // 5h  2230-0330
 
     for(counter=0;counter<74;counter++){ NoLight(); } // 59 2/10 m  59m12s 0330-0429
-    for(byte r=0;r<8;r++){ Wait2S20();  } // выравнивающий довесок
-    
+    for(byte r=0;r<20;r++){ Wait2S20();  } // выравнивающий довесок
+
     for(counter=0;counter<75;counter++){ TwiLight();} // morning 1h                0500-0600
     for(byte r=0;r<12;r++){for(counter=0;counter<75;counter++){ Fan=(counter&1); DayLight(); Fan=0; } Wait2S20();} //12h 0600-1800
 
