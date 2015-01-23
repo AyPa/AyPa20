@@ -1520,12 +1520,12 @@ Wait2S16();Wait2S16();
 // 20mhz
 // вентиляторы включаются каждую нечетную минуту днем.
     for(byte r=0;r<4;r++){for(counter=0;counter<75;counter++){ Fan=(counter&1); DayLight(); Fan=0;} Wait2S20();} // 4h  1800-2200
-    for(counter=0;counter<75;counter++){ TwiLight();} // evening 1h                2200-2230
+    for(counter=0;counter<75;counter++){ TwiLight();} // evening 1h                2200-2300
     
-    for(byte r=0;r<5;r++){for(counter=0;counter<75;counter++){ NoLight(); } } // 5h  2230-0330
+    for(byte r=0;r<5;r++){for(counter=0;counter<75;counter++){ NoLight(); } } // 5h  2300-0400
 
-    for(counter=0;counter<74;counter++){ NoLight(); } // 59 2/10 m  59m12s 0330-0429
-    for(byte r=0;r<20;r++){ Wait2S20();  } // выравнивающий довесок
+    for(counter=0;counter<74;counter++){ NoLight(); } // 59 2/10 m  59m12s 0400-045912
+    for(byte r=0;r<20;r++){ Wait2S20();  } // выравнивающий довесок (определен эмпирически)
 
     for(counter=0;counter<75;counter++){ TwiLight();} // morning 1h                0500-0600
     for(byte r=0;r<12;r++){for(counter=0;counter<75;counter++){ Fan=(counter&1); DayLight(); Fan=0; } Wait2S20();} //12h 0600-1800
