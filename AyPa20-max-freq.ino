@@ -224,13 +224,7 @@ void DayLight(void)
     
     "ldi r30,0\n\t" 
     "mov r1,r30\n\t" // r1=0
-//    "ldi r16,253\n\t" 
-//    "ldi r16,238\n\t" // original 7 ops
-//    "ldi r16,220\n\t" 
-//    "ldi r30,248\n\t" // 8 ops
-//    "ldi r16,220\n\t"// 2450 
-//    "ldi r16,223\n\t"// 2511 
-    "ldi r16,221\n\t"// 245 
+    "ldi r16,253\n\t" 
     "ldi r30,248\n\t"
     //60000
     //60160 60161
@@ -239,277 +233,276 @@ void DayLight(void)
 // (прерывание может выпасть на вспышку и она будет доооолго светить пока обрабатывается прерывание - посему запрещаем их на время пыхов)
 
 // 123456 порядок активации выходов. По 6 выходов в каждом из 3х портов.
-"nop\n\t" "out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 456123 слегка меняем порядок активации выходов для избежания ненужных резонансов
-"nop\n\t" "out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 234561
-"nop\n\t" "out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 612345
-"nop\n\t" "out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 456123
-"nop\n\t" "out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 123456
-"nop\n\t" "out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 651234
-"nop\n\t" "out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 346512
-"nop\n\t" "out 5,r20\n\t""out 5,r21\n\t""out 5,r23\n\t""out 5,r22\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r20\n\t""out 8,r21\n\t""out 8,r23\n\t""out 8,r22\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r26\n\t""out 11,r27\n\t""out 11,r29\n\t""out 11,r28\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r20\n\t""out 5,r21\n\t""out 5,r23\n\t""out 5,r22\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r20\n\t""out 8,r21\n\t""out 8,r23\n\t""out 8,r22\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r26\n\t""out 11,r27\n\t""out 11,r29\n\t""out 11,r28\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 
 // 123456 порядок активации выходов. По 6 выходов в каждом из 3х портов.
-"nop\n\t" "out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 456123 слегка меняем порядок активации выходов для избежания ненужных резонансов
-"nop\n\t" "out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 234561
-"nop\n\t" "out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 612345
-"nop\n\t" "out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 456123
-"nop\n\t" "out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 123456
-"nop\n\t" "out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 651234
-"nop\n\t" "out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 346512
-"nop\n\t" "out 5,r20\n\t""out 5,r21\n\t""out 5,r23\n\t""out 5,r22\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r20\n\t""out 8,r21\n\t""out 8,r23\n\t""out 8,r22\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r26\n\t""out 11,r27\n\t""out 11,r29\n\t""out 11,r28\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r20\n\t""out 5,r21\n\t""out 5,r23\n\t""out 5,r22\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r20\n\t""out 8,r21\n\t""out 8,r23\n\t""out 8,r22\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r26\n\t""out 11,r27\n\t""out 11,r29\n\t""out 11,r28\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 
 // 16x3x7=336ops
 
 // 123456 порядок активации выходов. По 6 выходов в каждом из 3х портов.
-"nop\n\t" "out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 456123 слегка меняем порядок активации выходов для избежания ненужных резонансов
-"nop\n\t" "out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 234561
-"nop\n\t" "out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 612345
-"nop\n\t" "out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 456123
-"nop\n\t" "out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 123456
-"nop\n\t" "out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 651234
-"nop\n\t" "out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 346512
-"nop\n\t" "out 5,r20\n\t""out 5,r21\n\t""out 5,r23\n\t""out 5,r22\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r20\n\t""out 8,r21\n\t""out 8,r23\n\t""out 8,r22\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r26\n\t""out 11,r27\n\t""out 11,r29\n\t""out 11,r28\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r20\n\t""out 5,r21\n\t""out 5,r23\n\t""out 5,r22\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r20\n\t""out 8,r21\n\t""out 8,r23\n\t""out 8,r22\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r26\n\t""out 11,r27\n\t""out 11,r29\n\t""out 11,r28\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 
 // 123456 порядок активации выходов. По 6 выходов в каждом из 3х портов.
-"nop\n\t" "out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 456123 слегка меняем порядок активации выходов для избежания ненужных резонансов
-"nop\n\t" "out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 234561
-"nop\n\t" "out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 612345
-"nop\n\t" "out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 456123
-"nop\n\t" "out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 123456
-"nop\n\t" "out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 651234
-"nop\n\t" "out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 346512
-"nop\n\t" "out 5,r20\n\t""out 5,r21\n\t""out 5,r23\n\t""out 5,r22\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r20\n\t""out 8,r21\n\t""out 8,r23\n\t""out 8,r22\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r26\n\t""out 11,r27\n\t""out 11,r29\n\t""out 11,r28\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r20\n\t""out 5,r21\n\t""out 5,r23\n\t""out 5,r22\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r20\n\t""out 8,r21\n\t""out 8,r23\n\t""out 8,r22\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r26\n\t""out 11,r27\n\t""out 11,r29\n\t""out 11,r28\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 
 // 32
 
 // 123456 порядок активации выходов. По 6 выходов в каждом из 3х портов.
-"nop\n\t" "out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 456123 слегка меняем порядок активации выходов для избежания ненужных резонансов
-"nop\n\t" "out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 234561
-"nop\n\t" "out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 612345
-"nop\n\t" "out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 456123
-"nop\n\t" "out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 123456
-"nop\n\t" "out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 651234
-"nop\n\t" "out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 346512
-"nop\n\t" "out 5,r20\n\t""out 5,r21\n\t""out 5,r23\n\t""out 5,r22\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r20\n\t""out 8,r21\n\t""out 8,r23\n\t""out 8,r22\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r26\n\t""out 11,r27\n\t""out 11,r29\n\t""out 11,r28\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r20\n\t""out 5,r21\n\t""out 5,r23\n\t""out 5,r22\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r20\n\t""out 8,r21\n\t""out 8,r23\n\t""out 8,r22\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r26\n\t""out 11,r27\n\t""out 11,r29\n\t""out 11,r28\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 
 // 123456 порядок активации выходов. По 6 выходов в каждом из 3х портов.
-"nop\n\t" "out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 456123 слегка меняем порядок активации выходов для избежания ненужных резонансов
-"nop\n\t" "out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 234561
-"nop\n\t" "out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 612345
-"nop\n\t" "out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 456123
-"nop\n\t" "out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 123456
-"nop\n\t" "out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 651234
-"nop\n\t" "out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 346512
-"nop\n\t" "out 5,r20\n\t""out 5,r21\n\t""out 5,r23\n\t""out 5,r22\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r20\n\t""out 8,r21\n\t""out 8,r23\n\t""out 8,r22\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r26\n\t""out 11,r27\n\t""out 11,r29\n\t""out 11,r28\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r20\n\t""out 5,r21\n\t""out 5,r23\n\t""out 5,r22\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r20\n\t""out 8,r21\n\t""out 8,r23\n\t""out 8,r22\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r26\n\t""out 11,r27\n\t""out 11,r29\n\t""out 11,r28\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 //48
 
 // 123456 порядок активации выходов. По 6 выходов в каждом из 3х портов.
-"nop\n\t" "out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 456123 слегка меняем порядок активации выходов для избежания ненужных резонансов
-"nop\n\t" "out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 234561
-"nop\n\t" "out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 612345
-"nop\n\t" "out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 456123
-"nop\n\t" "out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 123456
-"nop\n\t" "out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 651234
-"nop\n\t" "out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 346512
-"nop\n\t" "out 5,r20\n\t""out 5,r21\n\t""out 5,r23\n\t""out 5,r22\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r20\n\t""out 8,r21\n\t""out 8,r23\n\t""out 8,r22\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r26\n\t""out 11,r27\n\t""out 11,r29\n\t""out 11,r28\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r20\n\t""out 5,r21\n\t""out 5,r23\n\t""out 5,r22\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r20\n\t""out 8,r21\n\t""out 8,r23\n\t""out 8,r22\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r26\n\t""out 11,r27\n\t""out 11,r29\n\t""out 11,r28\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 
 // 123456 порядок активации выходов. По 6 выходов в каждом из 3х портов.
-"nop\n\t" "out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 456123 слегка меняем порядок активации выходов для избежания ненужных резонансов
-"nop\n\t" "out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 234561
-"nop\n\t" "out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 612345
-"nop\n\t" "out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 456123
-"nop\n\t" "out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 123456
-"nop\n\t" "out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r22\n\t""out 5,r23\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r22\n\t""out 8,r23\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r28\n\t""out 11,r29\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 651234
-"nop\n\t" "out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r22\n\t""out 5,r23\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r20\n\t""out 5,r21\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r22\n\t""out 8,r23\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r20\n\t""out 8,r21\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r28\n\t""out 11,r29\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r26\n\t""out 11,r27\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 // 346512
-"nop\n\t" "out 5,r20\n\t""out 5,r21\n\t""out 5,r23\n\t""out 5,r22\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
-"nop\n\t" "out 8,r20\n\t""out 8,r21\n\t""out 8,r23\n\t""out 8,r22\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
-"nop\n\t" "out 11,r26\n\t""out 11,r27\n\t""out 11,r29\n\t""out 11,r28\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
+"out 5,r20\n\t""out 5,r21\n\t""out 5,r23\n\t""out 5,r22\n\t""out 5,r18\n\t""out 5,r19\n\t""out 5,r1\n\t" // B0-B5 и выключаем порт B
+"out 8,r20\n\t""out 8,r21\n\t""out 8,r23\n\t""out 8,r22\n\t""out 8,r18\n\t""out 8,r19\n\t""out 8,r1\n\t" // С0-С5 и выключаем порт C
+"out 11,r26\n\t""out 11,r27\n\t""out 11,r29\n\t""out 11,r28\n\t""out 11,r24\n\t""out 11,r25\n\t""out 11,r31\n\t" // D2-D7 и выключаем порт D
 //64
 
 // 16x3x7=336ops
-// 16x3x8=384ops 1536ops
 // 1344ops
 
 "dec r30\n\t" //+1
@@ -1442,16 +1435,16 @@ void loop() {
 //    __asm__ __volatile__("wdr\n\t");//  wdt_reset();
    
 
-// start @ 16:00
+// start @ 18:00
 /*
 long t1=timer0_millis;
 //Wait2S16();
-//Wait2S20();
+Wait2S20();
 //Wait2S24();
 //WaitM16();
 //WaitM20();
 //WaitM24();
-DayLight();
+//DayLight();
 //TwiLight();
 //NoLight();
 t1=timer0_millis-t1;
@@ -1461,8 +1454,8 @@ Serial.println(">>>");
 //Serial.println(timer0_millis,DEC);
 Serial.println(t1,DEC);
 //Serial.println(sum,DEC);
-delay(1000);*/
-
+delay(1000);
+*/
 
 
 
@@ -1526,29 +1519,16 @@ Wait2S16();Wait2S16();
 */
 // 20mhz
 // вентиляторы включаются каждую нечетную минуту днем.
-// вентиляторы включаются каждую минуту через 3 днем.
-//    for(byte r=0;r<4;r++){for(counter=0;counter<75;counter++){ Fan=!(counter&3); DayLight(); Fan=0; PORTD=0;} Wait2S20();} // 4h  1800-2200
-//    for(byte r=0;r<6;r++){for(byte q=0;q<3;q++){for(counter=0;counter<25;counter++){ Fan=!(counter&3); DayLight(); Fan=0; PORTD=0;} Wait2S20();}} // 4h  1800-2200
-    for(byte r=0;r<6;r++){for(byte q=0;q<5;q++){for(counter=0;counter<15;counter++){ Fan=!(counter&3); DayLight(); Fan=0; PORTD=0;} Wait2S20();}} // 4h  1800-2200
-//+2*6=12
-//    for(byte r=0;r<6;r++){for(byte q=0;q<12;q++){for(counter=0;counter<5;counter++){ Fan=!(counter&3); DayLight(); Fan=0; PORTD=0;} Wait2S20();}} // 4h  1800-2200
+    for(byte r=0;r<4;r++){for(counter=0;counter<75;counter++){ Fan=(counter&1); DayLight(); Fan=0;} Wait2S20();} // 4h  1800-2200
     for(counter=0;counter<75;counter++){ TwiLight();} // evening 1h                2200-2300
     
     for(byte r=0;r<5;r++){for(counter=0;counter<75;counter++){ NoLight(); } } // 5h  2300-0400
 
     for(counter=0;counter<74;counter++){ NoLight(); } // 59 2/10 m  59m12s 0400-045912
-//    for(byte r=0;r<25;r++){ Wait2S20();  } // выравнивающий довесок (определен эмпирически)
-// need to minus 32 (2*16)
-// +42(2*21)
-// +10 in total (2*5)
-    for(byte r=0;r<15;r++){ Wait2S20();  } // выравнивающий довесок (определен эмпирически)
+    for(byte r=0;r<20;r++){ Wait2S20();  } // выравнивающий довесок (определен эмпирически)
 
     for(counter=0;counter<75;counter++){ TwiLight();} // morning 1h                0500-0600
-//    for(byte r=0;r<12;r++){for(counter=0;counter<75;counter++){ Fan=!(counter&3); DayLight(); Fan=0; PORTD=0; } Wait2S20();} //12h 0600-1800
-//    for(byte r=0;r<10;r++){for(byte q=0;q<3;q++){for(counter=0;counter<25;counter++){ Fan=!(counter&3); DayLight(); Fan=0; PORTD=0;} Wait2S20();}} // 4h  1800-2200
-    for(byte r=0;r<10;r++){for(byte q=0;q<5;q++){for(counter=0;counter<15;counter++){ Fan=!(counter&3); DayLight(); Fan=0; PORTD=0;} Wait2S20();}} // 4h  1800-2200
-// +2*10=20
- //   for(byte r=0;r<10;r++){for(byte q=0;q<12;q++){for(counter=0;counter<5;counter++){ Fan=!(counter&3); DayLight(); Fan=0; PORTD=0;} Wait2S20();}} // 4h  1800-2200
+    for(byte r=0;r<12;r++){for(counter=0;counter<75;counter++){ Fan=(counter&1); DayLight(); Fan=0; } Wait2S20();} //12h 0600-1800
 
 
 
